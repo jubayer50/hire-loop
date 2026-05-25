@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="mt-5">
-      <div className="bg-[url(/images/globe.png)] bg-no-repeat  bg-cover overflow-hidden bg-center">
+      <div className="bg-[url(/images/globe.png)] bg-no-repeat  bg-cover overflow-hidden bg-center bg-blend-luminosity">
         <Banner></Banner>
         <StatsSection></StatsSection>
       </div>
