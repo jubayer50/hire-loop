@@ -1,15 +1,13 @@
 import Banner from "@/Components/HomePage/Banner/Banner";
-import StatsSection from "@/Components/HomePage/Banner/StatsSection/StatsSection";
-import Image from "next/image";
+import StatsSection from "@/Components/HomePage/StatsSection/StatsSection";
 
 export default function Home() {
   return (
-    <div className="mt-5">
-      <div className="bg-[url(/images/globe.png)] bg-no-repeat  bg-cover overflow-hidden bg-center bg-blend-luminosity">
+    <div className="">
+      <div className="bg-[url(/images/globe.png)] bg-no-repeat bg-center md:bg-top bg-cover overflow-hidden bg-blend-luminosity">
         <Banner></Banner>
         <StatsSection></StatsSection>
       </div>
-      home page
     </div>
   );
 }

@@ -17,7 +17,7 @@ const Banner = () => {
         </div>
 
         {/* title and other content */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-white font-bold text-4xl md:text-[56px]">
             Find Your Dream Job Today
           </h2>
@@ -54,12 +54,15 @@ const Banner = () => {
 
           <div className="text-white flex flex-wrap items-center justify-center gap-5 mt-6">
             <p>Trending Position</p>
+
             <p className="py-1.5 px-3 rounded-full border border-[#FFFFFF10] text-[14px] bg-[#1A1A1B]">
               Product Designer
             </p>
+
             <p className="py-1.5 px-3 rounded-full border border-[#FFFFFF10] text-[14px] bg-[#1A1A1B]">
               AI Engineering
             </p>
+
             <p className="py-1.5 px-3 rounded-full border border-[#FFFFFF10] text-[14px] bg-[#1A1A1B]">
               Dev-ops Engineer
             </p>

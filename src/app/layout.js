@@ -14,12 +14,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      data-theme="dark"
-      className={`${manrope.className} dark h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en" data-theme="dark" className={`${manrope.className} dark`}>
+      <body className="">
         <Navbar></Navbar>
 
         <main>{children}</main>
