@@ -1,16 +1,37 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Link, Separator } from "@heroui/react";
+import { Button, Separator } from "@heroui/react";
+import MyNavLink from "./MyNavLink";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { div } from "motion/react-client";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathName = usePathname();
+
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
 
   const links = (
     <>
-      <li>Browse Jobs</li>
-      <li>Company</li>
-      <li>Pricing</li>
+      <MyNavLink href={"/"} pathName={pathName}>
+        Home
+      </MyNavLink>
+
+      <MyNavLink href={""} pathName={pathName}>
+        Browse Jobs
+      </MyNavLink>
+
+      <MyNavLink href={""} pathName={pathName}>
+        Company
+      </MyNavLink>
+
+      <MyNavLink href={""} pathName={pathName}>
+        Pricing
+      </MyNavLink>
     </>
   );
 
@@ -59,11 +80,30 @@ const Navbar = () => {
           />
 
           <div className="flex items-center gap-4">
-            <p className="text-[#5C53FE]">Sign In</p>
+            {user ? (
+              <div className="flex items-center gap-3">
+                <p>Hi, {user?.name.slice(0, 2)}</p>
 
-            <Button className={"bg-white text-black rounded-lg"}>
-              Get Started
-            </Button>
+                <Button
+                  size="sm"
+                  onClick={async () => await authClient.signOut()}
+                  variant="ghost"
+                  className={"rounded-lg"}
+                >
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-3">
+                <Link href="/login" className="text-[#5C53FE]">
+                  log In
+                </Link>
+
+                <Button size="sm" className={"bg-white text-black rounded-lg"}>
+                  Get Started
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </header>

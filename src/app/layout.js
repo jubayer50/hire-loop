@@ -2,6 +2,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
 import Footer from "@/Components/Footer/Footer";
+import { Toast } from "@heroui/react";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -19,6 +20,8 @@ export default function RootLayout({ children }) {
         <Navbar></Navbar>
 
         <main>{children}</main>
+
+        <Toast.Provider />
 
         <Footer></Footer>
       </body>
