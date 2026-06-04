@@ -28,6 +28,7 @@ const SignUpPage = () => {
     const userData = {
       name: data.name,
       email: data.email,
+      role: data.role,
       photoURL: data.photoURL,
       password: data.password,
     };
@@ -37,6 +38,7 @@ const SignUpPage = () => {
       password: userData.password,
       name: userData.name,
       image: userData.photoURL,
+      role: userData.role,
     });
 
     if (authData) {
@@ -64,7 +66,7 @@ const SignUpPage = () => {
       </div>
 
       <div className="mt-8 border rounded-md p-4 max-w-130 w-full mx-auto">
-        <form onSubmit={handleSubmit(onSubmit)} className=" space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className=" space-y-5">
           {/* name */}
           <div>
             <label className="font-medium text-lg block">Name</label>
@@ -104,6 +106,36 @@ const SignUpPage = () => {
               className="px-1.5 py-1 border rounded-md w-full"
               {...register("photoURL")}
             />
+          </div>
+
+          {/* role */}
+          <div>
+            <label className="font-medium text-lg block">Select Role:</label>
+
+            <div className="flex items-center gap-4">
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  value={"seeker"}
+                  defaultChecked
+                  {...register("role", {
+                    required: "Role is required.",
+                  })}
+                ></input>
+                Job seeker
+              </label>
+
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  value={"recruiter"}
+                  {...register("role", {
+                    required: "Role is required.",
+                  })}
+                ></input>
+                Recruiter
+              </label>
+            </div>
           </div>
 
           {/* password */}

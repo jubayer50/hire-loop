@@ -96,12 +96,12 @@ const LoginPage = () => {
               />
 
               {/* eye of or on */}
-              <button
+              <div
                 className="absolute top-[50%] translate-y-[-50%] right-2"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <Eye></Eye> : <EyeSlash></EyeSlash>}
-              </button>
+              </div>
             </div>
 
             {errors.password && (

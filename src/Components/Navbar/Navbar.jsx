@@ -6,7 +6,6 @@ import MyNavLink from "./MyNavLink";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-import { div } from "motion/react-client";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
