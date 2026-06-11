@@ -10,6 +10,8 @@ import {
   FileText,
   CreditCard,
   Gear,
+  Persons,
+  Factory,
 } from "@gravity-ui/icons";
 import { Button, Drawer } from "@heroui/react";
 import Link from "next/link";
@@ -65,9 +67,43 @@ export async function DashboardSideBar() {
     },
   ];
 
+  const adminNavLinks = [
+    {
+      icon: LayoutHeaderSideContent,
+      href: "/dashboard/admin",
+      label: "Dashboard",
+    },
+    {
+      icon: Persons,
+      href: "/dashboard/admin/users",
+      label: "Users",
+    },
+    {
+      icon: Factory,
+      href: "/dashboard/admin/companies",
+      label: "Companies",
+    },
+    {
+      icon: Briefcase,
+      href: "/dashboard/admin/jobs",
+      label: "Jobs",
+    },
+    {
+      icon: CreditCard,
+      href: "/dashboard/admin/payments",
+      label: "Payments",
+    },
+    {
+      icon: Gear,
+      href: "/dashboard/admin/settings",
+      label: "Settings",
+    },
+  ];
+
   const navLinksMaps = {
     seeker: seekerNavLinks,
     recruiter: recruiterNavLinks,
+    admin: adminNavLinks,
   };
 
   const navItems = navLinksMaps[user?.role || "seeker"];

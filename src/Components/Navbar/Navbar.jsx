@@ -19,6 +19,7 @@ const Navbar = () => {
   const dashboardHref = {
     seeker: "/dashboard/seeker",
     recruiter: "/dashboard/recruiter",
+    admin: "/dashboard/admin",
   };
 
   const links = (
@@ -31,20 +32,18 @@ const Navbar = () => {
         Browse Jobs
       </MyNavLink>
 
-      <MyNavLink href={""} pathName={pathName}>
-        Company
-      </MyNavLink>
-
       <MyNavLink href={"/plans"} pathName={pathName}>
         Pricing
       </MyNavLink>
 
-      <MyNavLink
-        href={dashboardHref[user?.role || "seeker"]}
-        pathName={pathName}
-      >
-        Dashboard
-      </MyNavLink>
+      {user && (
+        <MyNavLink
+          href={dashboardHref[user?.role || "seeker"]}
+          pathName={pathName}
+        >
+          Dashboard
+        </MyNavLink>
+      )}
     </>
   );
 

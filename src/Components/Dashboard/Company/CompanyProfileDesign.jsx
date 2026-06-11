@@ -18,6 +18,18 @@ const CompanyProfileDesign = ({ company }) => {
 }
 */
 
+  let statusClass = "";
+
+  switch (company?.company_status) {
+    case "Pending":
+      statusClass = "border-yellow-500 text-yellow-500";
+      break;
+
+    case "Active":
+      statusClass = "border-green-500 text-green-500";
+      break;
+  }
+
   return (
     <div className="relative border border-[#] p-5 rounded-md">
       <div className="flex flex-col md:flex-row items-center gap-5">
@@ -33,7 +45,9 @@ const CompanyProfileDesign = ({ company }) => {
 
         <div>
           <h2 className="font-bold text-2xl">{company?.company_name}</h2>
-          <p className="border rounded-full px-2 py-.5 text-sm mt-1">
+          <p
+            className={`border rounded-full w-fit px-2 py-.5 text-sm mt-1 ${statusClass}`}
+          >
             {company?.company_status}
           </p>
         </div>
