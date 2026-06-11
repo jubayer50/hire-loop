@@ -30,7 +30,7 @@ export default function StatsDashboard() {
   ];
 
   return (
-    <div className="flex items-center justify-center mt-16">
+    <div className="max-w-330 px-3 flex items-center justify-center mt-16">
       {/* Responsive layout matrix matching image_e70ce0.png */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
         {statsData.map((stat) => (

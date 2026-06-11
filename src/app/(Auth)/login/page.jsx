@@ -4,7 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, toast } from "@heroui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
@@ -12,6 +12,9 @@ import { FcGoogle } from "react-icons/fc";
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect");
 
   const {
     register,
@@ -36,7 +39,7 @@ const LoginPage = () => {
 
     if (authData) {
       toast.success("login successful!");
-      router.push("/");
+      router.push(redirectTo || "/");
     }
 
     if (error) {
@@ -141,7 +144,10 @@ const LoginPage = () => {
         <div className="text-center mt-4">
           <p>
             If you do not have Account |{" "}
-            <Link href={"/signup"} className="text-[#5C53FE] font-semibold">
+            <Link
+              href={`/signup?redirect=${redirectTo ? redirectTo : "/"}`}
+              className="text-[#5C53FE] font-semibold"
+            >
               Sign Up
             </Link>
           </p>

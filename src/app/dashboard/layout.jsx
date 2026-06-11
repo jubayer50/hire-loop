@@ -2,7 +2,7 @@ import { DashboardSideBar } from "@/Components/Dashboard/DashboardSideBar/Dashbo
 
 const DashboardLayout = ({ children }) => {
   return (
-    <div className="mt-19 flex min-h-screen gap-4">
+    <div className="mt-19 flex flex-col md:flex-row min-h-screen gap-4">
       <DashboardSideBar></DashboardSideBar>
       <div className="flex-1">{children}</div>
     </div>

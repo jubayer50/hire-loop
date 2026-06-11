@@ -20,7 +20,7 @@ const Navbar = () => {
         Home
       </MyNavLink>
 
-      <MyNavLink href={""} pathName={pathName}>
+      <MyNavLink href={"/jobs"} pathName={pathName}>
         Browse Jobs
       </MyNavLink>
 
@@ -28,7 +28,7 @@ const Navbar = () => {
         Company
       </MyNavLink>
 
-      <MyNavLink href={""} pathName={pathName}>
+      <MyNavLink href={"/plans"} pathName={pathName}>
         Pricing
       </MyNavLink>
     </>
@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
-      <header className="flex items-center justify-between px-4 py-3 max-w-330 mx-auto ">
+      <header className="flex items-center justify-between px-3 py-3 max-w-330 mx-auto ">
         <div className="flex items-center gap-4">
           <button
             className="md:hidden"
@@ -78,7 +78,7 @@ const Navbar = () => {
             className="bg-white/50 hidden md:block"
           />
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {user ? (
               <div className="flex items-center gap-3">
                 <p>Hi, {user?.name.slice(0, 2)}</p>
@@ -97,12 +97,14 @@ const Navbar = () => {
                 <Link href="/login" className="text-[#5C53FE]">
                   log In
                 </Link>
-
-                <Button size="sm" className={"bg-white text-black rounded-lg"}>
-                  Get Started
-                </Button>
               </div>
             )}
+
+            <div>
+              <Button size="sm" className={"bg-white text-black rounded-lg"}>
+                Get Started
+              </Button>
+            </div>
           </div>
         </div>
       </header>
