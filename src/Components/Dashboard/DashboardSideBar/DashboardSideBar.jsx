@@ -1,16 +1,57 @@
+import { getUserSession } from "@/lib/core/session";
 import {
   LayoutSideContentLeft,
   Bell,
   House,
   Magnifier,
   Briefcase,
+  LayoutHeaderSideContent,
+  Bookmark,
+  FileText,
+  CreditCard,
+  Gear,
 } from "@gravity-ui/icons";
 import { Button, Drawer } from "@heroui/react";
 import Link from "next/link";
 
-export function DashboardSideBar() {
-  const navItems = [
-    { icon: House, href: "/dashboard/recruiter", label: "Home" },
+export async function DashboardSideBar() {
+  const user = await getUserSession();
+
+  const seekerNavLinks = [
+    {
+      icon: LayoutHeaderSideContent,
+      href: "/dashboard/seeker",
+      label: "Dashboard",
+    },
+    {
+      icon: Magnifier,
+      href: "/dashboard/seeker/jobs",
+      label: "Jobs",
+    },
+    {
+      icon: Bookmark,
+      href: "/dashboard/seeker/saved-jobs",
+      label: "Saved Jobs",
+    },
+    {
+      icon: FileText,
+      href: "/dashboard/seeker/applications",
+      label: "Applications",
+    },
+    {
+      icon: CreditCard,
+      href: "/dashboard/seeker/billing",
+      label: "Billing",
+    },
+    {
+      icon: Gear,
+      href: "/dashboard/seeker/settings",
+      label: "Settings",
+    },
+  ];
+
+  const recruiterNavLinks = [
+    { icon: House, href: "/dashboard/recruiter", label: "Dashboard" },
     { icon: Magnifier, href: "/dashboard/recruiter/jobs", label: "Jobs" },
     {
       icon: Bell,
@@ -23,6 +64,13 @@ export function DashboardSideBar() {
       label: "Company Profile",
     },
   ];
+
+  const navLinksMaps = {
+    seeker: seekerNavLinks,
+    recruiter: recruiterNavLinks,
+  };
+
+  const navItems = navLinksMaps[user?.role || "seeker"];
 
   const navbarContent = (
     <nav className="flex flex-col gap-1">

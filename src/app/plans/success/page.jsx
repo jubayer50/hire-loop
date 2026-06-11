@@ -1,4 +1,6 @@
+import { createSubscriptions } from "@/lib/actions/subscriptions";
 import { stripe } from "@/lib/stripe";
+import { email } from "better-auth";
 import { redirect } from "next/navigation";
 
 export default async function Success({ searchParams }) {
@@ -9,6 +11,7 @@ export default async function Success({ searchParams }) {
 
   const {
     status,
+    metadata,
     customer_details: { email: customerEmail },
   } = await stripe.checkout.sessions.retrieve(session_id, {
     expand: ["line_items", "payment_intent"],
@@ -19,6 +22,13 @@ export default async function Success({ searchParams }) {
   }
 
   if (status === "complete") {
+    const subInfo = {
+      email: customerEmail,
+      planId: metadata.planId,
+    };
+
+    const result = await createSubscriptions(subInfo);
+
     return (
       <section className="mt-26 mb-10" id="success">
         <p>

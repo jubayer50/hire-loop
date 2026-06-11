@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import JobApply from "./JobApply";
 import { getApplicationByApplicantId } from "@/lib/api/application";
 import Link from "next/link";
+import { getPlanById } from "@/lib/api/plans";
 
 const ApplyPage = async ({ params }) => {
   const { id } = await params;
@@ -28,10 +29,7 @@ const ApplyPage = async ({ params }) => {
 
   const applications = await getApplicationByApplicantId(user.id);
 
-  const plan = {
-    name: "Free",
-    maxApplicationPerMonth: 3,
-  };
+  const plan = await getPlanById(user?.plan || "seeker_free");
 
   const job = await getJobsById(id);
 
@@ -42,7 +40,7 @@ const ApplyPage = async ({ params }) => {
         {plan.maxApplicationPerMonth}.
         <p>
           Purchase plane for more application{" "}
-          <Link href={"/view-plan"} className="border-b text-blue-500">
+          <Link href={"/plans"} className="border-b text-blue-500">
             View Plan
           </Link>
         </p>

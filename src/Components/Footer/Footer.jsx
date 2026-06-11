@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { LogoFacebook, LogoLinkedin, LogoGithub } from "@gravity-ui/icons";
+import Image from "next/image";
+import Logo from "../../../public/images/logo.png";
 
 export default function Footer() {
   return (
@@ -11,14 +13,18 @@ export default function Footer() {
           <div className="space-y-6">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-fuchsia-500">
-                <span className="text-xl font-bold text-white">P</span>
-              </div>
+              <Image
+                src={Logo}
+                alt="Logo"
+                width={200}
+                height={200}
+                className="w-26 md:w-32"
+              ></Image>
 
-              <div className="leading-none">
+              {/* <div className="leading-none">
                 <h2 className="text-xl font-bold">Hiring</h2>
                 <h2 className="text-xl font-bold">Loop</h2>
-              </div>
+              </div> */}
             </Link>
 
             {/* Description */}

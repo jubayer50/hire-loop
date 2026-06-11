@@ -6,6 +6,8 @@ import MyNavLink from "./MyNavLink";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
+import Logo from "../../../public/images/logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +15,11 @@ const Navbar = () => {
 
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
+
+  const dashboardHref = {
+    seeker: "/dashboard/seeker",
+    recruiter: "/dashboard/recruiter",
+  };
 
   const links = (
     <>
@@ -30,6 +37,13 @@ const Navbar = () => {
 
       <MyNavLink href={"/plans"} pathName={pathName}>
         Pricing
+      </MyNavLink>
+
+      <MyNavLink
+        href={dashboardHref[user?.role || "seeker"]}
+        pathName={pathName}
+      >
+        Dashboard
       </MyNavLink>
     </>
   );
@@ -67,7 +81,18 @@ const Navbar = () => {
               )}
             </svg>
           </button>
-          <div>Logo</div>
+
+          <div>
+            <Link href={"/"}>
+              <Image
+                src={Logo}
+                alt=""
+                width={200}
+                height={200}
+                className="w-26 md:w-32"
+              ></Image>
+            </Link>
+          </div>
         </div>
 
         <div className="flex items-center space-x-8 rounded-xl px-5 py-2.5 md:bg-linear-to-r from-[#222222] to-[#22222200] ">
@@ -101,7 +126,10 @@ const Navbar = () => {
             )}
 
             <div>
-              <Button size="sm" className={"bg-white text-black rounded-lg"}>
+              <Button
+                size="sm"
+                className={"bg-white text-black rounded-lg hidden md:block"}
+              >
                 Get Started
               </Button>
             </div>
