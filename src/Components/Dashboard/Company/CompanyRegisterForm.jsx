@@ -54,6 +54,7 @@ const CompanyRegisterForm = ({ company, session }) => {
       company_logo: logoURL,
       company_status: "Pending",
       recruiterId: recruiter?.id,
+      recruiterEmail: recruiter?.email,
     };
 
     // console.log(updateCompanyData, "from company registration form page");
